@@ -7,6 +7,7 @@ public class StackExample{
             DTO<String> dto5 = new DTO<String>("StringObject5");
 
             Stack s = new Stack(dto1, 3);
+            s.isEmpty();
 
             // Scenario, should stay: 1, 2, 3, 5, 1, 2, 3
             s.push(dto1);
@@ -20,6 +21,8 @@ public class StackExample{
             s.push(dto3);
             s.push(dto4);
             s.pop();
+
+            s.isEmpty();
 
     }
 }
@@ -65,8 +68,13 @@ class Stack {
     }
 
     public boolean isEmpty(){
+        if (this.index == 0) {
 
-        return true;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }
