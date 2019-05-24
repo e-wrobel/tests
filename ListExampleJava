@@ -15,6 +15,8 @@ public class ListExample {
     l.remove(1);
     l.insert(dto1);
     l.insert(dto2);
+    l.remove(4);
+    l.insert(dto2);
   }
 
 
@@ -54,15 +56,19 @@ class List {
 
   // Remove element from list for given index
   public void remove(int n){
-    if (n < (this.size -1)){
+    if (n < (this.index -1)){
       this.tab[n] = null;
 
-      DTO temp = null;
       for (int i=n; i < this.size -1; i++){
-          //make swap
+        //make swap
         this.tab[i] = this.tab[i +1];
       }
+
       tab[this.index -1] = null;
+      this.index--;
+    }
+    else {
+      this.tab[n] = null;
       this.index--;
     }
 
