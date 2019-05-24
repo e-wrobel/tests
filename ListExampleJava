@@ -13,6 +13,8 @@ public class ListExample {
     l.insert(dto3);
     l.insert(dto4);
     l.remove(1);
+    l.insert(dto1);
+    l.insert(dto2);
   }
 
 
@@ -56,9 +58,9 @@ class List {
       this.tab[n] = null;
 
       DTO temp = null;
-      for (int i=this.index -1; i>n; i--){
+      for (int i=n; i < this.size -1; i++){
           //make swap
-
+        this.tab[i] = this.tab[i +1];
       }
       tab[this.index -1] = null;
       this.index--;
