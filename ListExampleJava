@@ -1,0 +1,96 @@
+public class ListExample {
+
+  public static void main(String []args){
+
+    DTO<String> dto1 = new DTO<String>("StringObject1");
+    DTO<String> dto2 = new DTO<String>("StringObject2");
+    DTO<String> dto3 = new DTO<String>("StringObject3");
+    DTO<String> dto4 = new DTO<String>("StringObject4");
+
+    List l = new List(dto1, 4);
+    l.insert(dto1);
+    l.insert(dto2);
+    l.insert(dto3);
+    l.insert(dto4);
+    l.remove(1);
+  }
+
+
+}
+
+class List {
+  int size;
+  int index;
+  DTO tab[];
+
+  List(DTO dto, int default_size){
+    this.size = default_size;
+    this.index = 0;
+    this.tab = new DTO[this.size];
+  }
+
+  // Add elelement to the end of list
+  public void insert(DTO e){
+    if (this.index < this.size){
+      this.tab[this.index++] = e;
+    }
+    else {
+      System.out.println("tab overloaded, resizing!");
+
+      // Create twice bigger array and copy everything from the new one
+      DTO temp[] = new DTO[ 2 * this.size ];
+      for (int i = 0; i < this.size; i++){
+        temp[i] = this.tab[i];
+      }
+
+      this.tab = temp;
+      this.size *= 2;
+
+      this.tab[this.index++] = e;
+    }
+  }
+
+  // Remove element from list for given index
+  public void remove(int n){
+    if (n < (this.size -1)){
+      this.tab[n] = null;
+
+      DTO temp = null;
+      for (int i=this.index -1; i>n; i--){
+          //make swap
+
+      }
+      tab[this.index -1] = null;
+      this.index--;
+    }
+
+  }
+
+  // Return element from given index
+  public DTO find(int n){
+    return  null;
+  }
+
+  // Make list NULL
+  public void makeNull(){
+
+  }
+
+  // Display all elements in List
+  public void display(){
+
+  }
+
+}
+
+class DTO<T>{
+  T o;
+
+  DTO(T o){
+    this.o = o;
+  }
+
+  public T getObject(){
+    return this.o;
+  }
+}
