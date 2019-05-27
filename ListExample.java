@@ -2,12 +2,12 @@ public class ListExample {
 
   public static void main(String []args){
 
-    DTO<String> dto1 = new DTO<String>("StringObject1");
-    DTO<String> dto2 = new DTO<String>("StringObject2");
-    DTO<String> dto3 = new DTO<String>("StringObject3");
-    DTO<String> dto4 = new DTO<String>("StringObject4");
+    DtoList<String> dto1 = new DtoList<String>("StringObject1");
+    DtoList<String> dto2 = new DtoList<String>("StringObject2");
+    DtoList<String> dto3 = new DtoList<String>("StringObject3");
+    DtoList<String> dto4 = new DtoList<String>("StringObject4");
 
-    List l = new List(dto1, 4);
+    List<DtoList> l = new List<>(4);
     l.insert(dto1);
     l.insert(dto2);
     l.insert(dto3);
@@ -22,19 +22,19 @@ public class ListExample {
 
 }
 
-class List {
+class List<T> {
   int size;
   int index;
-  DTO tab[];
+  T tab[];
 
-  List(DTO dto, int default_size){
+  List(int default_size){
     this.size = default_size;
     this.index = 0;
-    this.tab = new DTO[this.size];
+    this.tab = (T[])new Object[this.size];
   }
 
   // Add elelement to the end of list
-  public void insert(DTO e){
+  public void insert(T e){
     if (this.index < this.size){
       this.tab[this.index++] = e;
     }
@@ -42,7 +42,7 @@ class List {
       System.out.println("tab overloaded, resizing!");
 
       // Create twice bigger array and copy everything from the new one
-      DTO temp[] = new DTO[ 2 * this.size ];
+      T temp[] = (T[])new Object[2 * this.size];
       for (int i = 0; i < this.size; i++){
         temp[i] = this.tab[i];
       }
@@ -75,7 +75,7 @@ class List {
   }
 
   // Return element from given index
-  public DTO find(int n){
+  public DtoStack find(int n){
     return  null;
   }
 
@@ -91,10 +91,10 @@ class List {
 
 }
 
-class DTO<T>{
+class DtoList<T>{
   T o;
 
-  DTO(T o){
+  DtoList(T o){
     this.o = o;
   }
 

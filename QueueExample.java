@@ -3,13 +3,13 @@ import java.lang.Object;
 public class QueueExample {
     public static void main(String args[]){
 
-        DTO2<String> dto1 = new DTO2<String>("StringObject1");
-        DTO2<String> dto2 = new DTO2<String>("StringObject2");
-        DTO2<String> dto3 = new DTO2<String>("StringObject3");
-        DTO2<String> dto4 = new DTO2<String>("StringObject4");
-        DTO2<String> dto5 = new DTO2<String>("StringObject5");
+        DtoQueue<String> dto1 = new DtoQueue<String>("StringObject1");
+        DtoQueue<String> dto2 = new DtoQueue<String>("StringObject2");
+        DtoQueue<String> dto3 = new DtoQueue<String>("StringObject3");
+        DtoQueue<String> dto4 = new DtoQueue<String>("StringObject4");
+        DtoQueue<String> dto5 = new DtoQueue<String>("StringObject5");
 
-        Queue<DTO2> s = new Queue<>(3);
+        Queue<DtoQueue> s = new Queue<>(3);
         s.isEmpty();
 
         // Scenario: adding 1, 2, 3
@@ -98,10 +98,10 @@ class Queue<T> {
 
 }
 
-class DTO2<T>{
+class DtoQueue<T>{
     T o;
 
-    DTO2(T o){
+    DtoQueue(T o){
         this.o = o;
     }
 

@@ -1,12 +1,12 @@
 public class StackExample{
     public static void main(String args[]){
-            DTO<String> dto1 = new DTO<String>("StringObject1");
-            DTO<String> dto2 = new DTO<String>("StringObject2");
-            DTO<String> dto3 = new DTO<String>("StringObject3");
-            DTO<String> dto4 = new DTO<String>("StringObject4");
-            DTO<String> dto5 = new DTO<String>("StringObject5");
+            DtoStack<String> dto1 = new DtoStack<String>("StringObject1");
+            DtoStack<String> dto2 = new DtoStack<String>("StringObject2");
+            DtoStack<String> dto3 = new DtoStack<String>("StringObject3");
+            DtoStack<String> dto4 = new DtoStack<String>("StringObject4");
+            DtoStack<String> dto5 = new DtoStack<String>("StringObject5");
 
-            Stack<DTO> s = new Stack<>(3);
+            Stack<DtoStack> s = new Stack<>(3);
             s.isEmpty();
 
             // Scenario, should stay: 1, 2, 3, 5, 1, 2, 3
@@ -79,10 +79,10 @@ class Stack<T> {
 
 }
 
-class DTO<T>{
+class DtoStack<T>{
     T o;
 
-    DTO(T o){
+    DtoStack(T o){
         this.o = o;
     }
 
