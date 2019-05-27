@@ -1,3 +1,5 @@
+import java.lang.Object;
+
 public class QueueExample {
     public static void main(String args[]){
 
@@ -7,7 +9,7 @@ public class QueueExample {
         DTO2<String> dto4 = new DTO2<String>("StringObject4");
         DTO2<String> dto5 = new DTO2<String>("StringObject5");
 
-        Queue s = new Queue(dto1, 3);
+        Queue<DTO2> s = new Queue<>(3);
         s.isEmpty();
 
         // Scenario: adding 1, 2, 3
@@ -35,20 +37,20 @@ public class QueueExample {
     }
 }
 
-class Queue {
+class Queue<T> {
     int size;
     int push_index;
     int pop_index;
-    DTO2 tab[];
+    T tab[];
 
-    Queue(DTO2 dto, int default_size){
+    Queue(int default_size){
         this.size = default_size;
         this.push_index = 0;
         this.pop_index = 0;
-        this.tab = new DTO2[this.size];
+        this.tab = (T[]) new Object[this.size];
     }
 
-    public void push(DTO2 e){
+    public void push(T e){
 
         if (this.push_index < this.size){
             this.tab[this.push_index++] = e;
@@ -57,7 +59,7 @@ class Queue {
             System.out.println("tab overloaded, resizing!");
 
             // Create twice bigger array and copy everything from the new one
-            DTO2 temp[] = new DTO2[ 2 * this.size ];
+            T temp[] = (T[])new Object[2 * this.size];
             for (int i = 0; i < this.size; i++){
                 temp[i] = this.tab[i];
             }
@@ -69,9 +71,9 @@ class Queue {
         }
     }
 
-    public DTO2 pop(){
+    public T pop(){
         if (this.pop_index < this.push_index) {
-            DTO2 o = this.tab[this.pop_index];
+            T o = this.tab[this.pop_index];
             this.tab[this.pop_index++] = null;
 
             return o;
