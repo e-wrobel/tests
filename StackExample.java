@@ -6,7 +6,7 @@ public class StackExample{
             DTO<String> dto4 = new DTO<String>("StringObject4");
             DTO<String> dto5 = new DTO<String>("StringObject5");
 
-            Stack s = new Stack(dto1, 3);
+            Stack<DTO> s = new Stack<>(3);
             s.isEmpty();
 
             // Scenario, should stay: 1, 2, 3, 5, 1, 2, 3
@@ -27,19 +27,19 @@ public class StackExample{
     }
 }
 
-class Stack {
+class Stack<T> {
     int size;
     int index;
-    DTO tab[];
+    T tab[];
 
-    Stack(DTO dto, int default_size){
+    Stack(int default_size){
         this.size = default_size;
         this.index = 0;
 
-        this.tab = new DTO[this.size];
+        this.tab = (T[])new Object[this.size];
     }
 
-    public void push(DTO e){
+    public void push(T e){
 
         if (this.index < this.size){
             this.tab[this.index++] = e;
@@ -48,7 +48,7 @@ class Stack {
             System.out.println("tab overloaded, resizing!");
 
             // Create twice bigger array and copy everything from the new one
-            DTO temp[] = new DTO[ 2 * this.size ];
+            T temp[] = (T[])new Object[2 * this.size];
             for (int i = 0; i < this.size; i++){
                 temp[i] = this.tab[i];
             }
@@ -60,8 +60,8 @@ class Stack {
         }
     }
 
-    public DTO pop(){
-        DTO o = this.tab[--this.index];
+    public T pop(){
+        T o = this.tab[--this.index];
         this.tab[this.index] = null;
 
         return o;
