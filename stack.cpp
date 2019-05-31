@@ -28,11 +28,10 @@ class CustomStack{
           for (int i = 0; i < size; i++){
               temp[i] = tab[i];
           }
-
+          delete []tab;
           tab = temp;
           size *= 2;
 
-          delete []temp;
           tab[index++] = e;
       }
   }
@@ -53,11 +52,17 @@ class CustomStack{
           return false;
       }
   } 
+
+  void printStack(){
+      for (int i = 0; i < index; i++){
+          cout << "Index: " << i << ", item: " << tab[i] << endl;
+      }
+  }
 };
 
 int main(){
 
-    CustomStack<string> s = CustomStack<string>(3);
+    CustomStack<string> s = CustomStack<string>(2);
     s.isEmpty();
 
     string dto1 = "StringObject1";
@@ -80,5 +85,7 @@ int main(){
     s.pop();
 
     s.isEmpty();
+    s.printStack();
 
     return 0; 
+}
