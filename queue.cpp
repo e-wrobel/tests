@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-template <typename T>
+template <class T>
 class CustomQueue
 {
 
@@ -37,9 +37,9 @@ public:
                 temp[i] = tab[i];
             }
 
+            delete[] tab;
             tab = temp;
-            delete[] temp;
-
+            
             size *= 2;
 
             tab[push_index++] = e;
